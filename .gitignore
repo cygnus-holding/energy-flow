@@ -1,7 +1,17 @@
+# nodejs-express-mysql
+
+## Project setup
+```
+npm install
+```
+    
+
+package-lock.json
+package.json
+README.md
+```
+I have tried to add the following to my .gitignore file:
+`
 node_modules
+node_modules/
 
-# Install dependencies
-RUN npm install
-
-
-*node_modules
