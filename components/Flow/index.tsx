@@ -117,7 +117,6 @@ const defaultEdgeOptions = {
 function Flow() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const [variant, setVariant] = useState('dots');
   const onConnect = useCallback(
     (params: Connection | Edge) => setEdges((eds) => addEdge(params, eds)),
     [setEdges]
@@ -152,7 +151,7 @@ function Flow() {
         connectionLineType={ConnectionLineType.Bezier}
         fitView
       >
-        <Background color="#ccc" variant={variant} />
+        <Background color="#ccc" variant="dots" />
         <Controls position='top-right' backgrouns-color='white' />
       </ReactFlow>
     </div>
