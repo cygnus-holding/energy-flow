@@ -26,6 +26,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/flowgraph.js"
+    ],
+    "/sankey": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/sankey.js"
     ]
   },
   "ampFirstPages": []
