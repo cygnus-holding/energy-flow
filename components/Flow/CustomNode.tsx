@@ -1,7 +1,12 @@
-import React, { memo } from 'react';
+import React, { ChangeEvent, memo } from 'react';
 import { Handle, Position, useReactFlow, useStoreApi } from 'reactflow';
 
-const options = [
+interface Option {
+  value: string;
+  label: string;
+}
+
+const options: Option[] = [
   {
     value: 'smoothstep',
     label: 'Smoothstep',
@@ -20,11 +25,18 @@ const options = [
   },
 ];
 
-function Select({ value, handleId, nodeId, top }) {
+interface SelectProps {
+  value: string;
+  handleId: string;
+  nodeId: string;
+  top: number;
+}
+
+const Select: React.FC<SelectProps> = ({ value, handleId, nodeId, top }) => {
   const { setNodes } = useReactFlow();
   const store = useStoreApi();
 
-  const onChange = (evt) => {
+  const onChange = (evt: ChangeEvent<HTMLSelectElement>) => {
     const { nodeInternals } = store.getState();
     setNodes(
       Array.from(nodeInternals.values()).map((node) => {
@@ -63,7 +75,16 @@ function Select({ value, handleId, nodeId, top }) {
   );
 }
 
-function CustomNode({ id, data }) {
+interface CustomNodeProps {
+  id: string;
+  data: {
+    selects: {
+      [key: string]: string;
+    };
+  };
+}
+
+const CustomNode: React.FC<CustomNodeProps> = ({ id, data }) => {
   return (
     <div className="px-2 py-2 shadow-md rounded-md bg-white border-2 border-gray-400">
       <div className="font-bold mb-2">This is a <strong>custom node</strong></div>
