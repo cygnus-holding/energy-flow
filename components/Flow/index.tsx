@@ -27,6 +27,8 @@ import ProcessNode from './ProcessNode';
 import InflowAddNode from './InflowAddNode';
 import OutflowAddNode from './OutflowAddNode';
 import ReceiverNode from './ReceiverNode';
+import OutflowReceiveNode from './OutflowReceiveNode';
+
 
 import 'tailwindcss/tailwind.css';
 
@@ -56,25 +58,28 @@ const initialNodes: Node[] = [
     },
   },
   {
-    id: '5',
-    type: 'default',
-    className: 'annotation',
+    id: '4',
+    type: 'outflowAdd',
+    position: { x: 800, y: -150 },
     data: {
-      label: (
-        <>
-          On the bottom left you see the <strong>Controls</strong> and the bottom right the{' '}
-          <strong>MiniMap</strong>. This is also just a node 🥳
-        </>
-      ),
+      label: 'Output Node',
     },
-    selectable: false,
-    position: { x: 150, y: 400 },
+  },
+  {
+    id: '5',
+    type: 'outflowReceive',
+    position: { x: 1200, y: -150 },
+    data: {
+      label: 'Receive Node',
+    },
   },
 ];
 
 export const edges = [
   { id: 'e1-2', source: '1', target: '2', label: 'this is an edge label' },
-  { id: 'e1-3', source: '1', target: '3', animated: true },
+  { id: 'e3-4', source: '3', target: '4' },
+
+  { id: '1', source: '1', sourceHandle: 'b', target: '3', animated: true },
   {
     id: 'e4-5',
     source: '4',
@@ -118,9 +123,11 @@ const nodeTypes = {
   default: DefaultNode,
   process: ProcessNode,
   inflowAdd: InflowAddNode,
-  outflowAdd: OutflowAddNode, 
+  outflowAdd: OutflowAddNode,
+  outflowReceive: OutflowReceiveNode, // <- new addition
   receiver: ReceiverNode,
 };
+
 
 
 const defaultEdgeOptions = {
