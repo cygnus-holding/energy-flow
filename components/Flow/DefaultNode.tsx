@@ -1,11 +1,43 @@
-import React, { memo } from 'react';
+import { memo, FC, CSSProperties } from 'react';
+import { Handle, Position, NodeProps, NodeResizer } from 'reactflow';
 
-function DefaultNode({ data }) {
+const sourceHandleStyleA: CSSProperties = { left: 50 };
+const sourceHandleStyleB: CSSProperties = {
+  right: 50,
+  left: 'auto',
+};
+
+const CustomNode1: FC<NodeProps> = ({ data, xPos, yPos }) => {
   return (
-    <div className="default-node">
-      {data.label}
-    </div>
-  );
-}
+    <>
+      <NodeResizer />
+      <Handle type="target" position={Position.Top} />
+      <div>
+        <div>
+          Label: <strong>{data.label}</strong>
+        </div>
+        <div>
+          Position:{' '}
+          <strong>
+            {xPos.toFixed(2)},{yPos.toFixed(2)}
+          </strong>
+        </div>
+      </div>
 
-export default memo(DefaultNode);
+      <Handle
+        type="source"
+        position={Position.Bottom}
+        id="a"
+        style={sourceHandleStyleA}
+      />
+      <Handle
+        type="source"
+        position={Position.Bottom}
+        id="b"
+        style={sourceHandleStyleB}
+      />
+    </>
+  );
+};
+
+export default memo(CustomNode1);

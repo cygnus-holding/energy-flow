@@ -17,16 +17,11 @@ import ReactFlow, {
   useReactFlow,
 } from 'reactflow';
 import CustomNode from './CustomNode';
-import InputNode from './InputNode';
-import TextUpdaterNode from './TextUpdaterNode';
-import AnnotationNode from './AnnotationNode';
-import OutputNode from './OutputNode';
 import DefaultNode from './DefaultNode';
 import ComponentLibrary from './ComponentLibrary'; // <- new import
 import ProcessNode from './ProcessNode';
 import InflowAddNode from './InflowAddNode';
 import OutflowAddNode from './OutflowAddNode';
-import ReceiverNode from './ReceiverNode';
 import OutflowReceiveNode from './OutflowReceiveNode';
 
 
@@ -59,14 +54,6 @@ const initialNodes: Node[] = [
   },
   {
     id: '4',
-    type: 'outflowAdd',
-    position: { x: 800, y: -150 },
-    data: {
-      label: 'Output Node',
-    },
-  },
-  {
-    id: '5',
     type: 'outflowReceive',
     position: { x: 1200, y: -150 },
     data: {
@@ -79,7 +66,6 @@ export const edges = [
   { id: 'e1-2', source: '1', target: '2', label: 'this is an edge label' },
   { id: 'e3-4', source: '3', target: '4' },
 
-  { id: '1', source: '1', sourceHandle: 'b', target: '3', animated: true },
   {
     id: 'e4-5',
     source: '4',
@@ -95,8 +81,8 @@ export const edges = [
   },
   {
     id: 'e4-6',
-    source: '4',
-    target: '6',
+    source: '3',
+    target: '4',
     type: 'bezier',
     sourceHandle: 'handle-1',
     data: {
@@ -111,21 +97,16 @@ export const edges = [
 
 const initialEdges: Edge[] = [
   { id: 'e1-2', source: '1', target: '2' },
-  { id: 'e1-3', source: '1', target: '3' },
+  { id: 'e1-3', source: '4', target: '3' },
 ];
 
 const nodeTypes = {
   custom: CustomNode,
-  input: InputNode,
-  textUpdater: TextUpdaterNode,
-  annotation: AnnotationNode,
-  output: OutputNode,
   default: DefaultNode,
   process: ProcessNode,
   inflowAdd: InflowAddNode,
   outflowAdd: OutflowAddNode,
   outflowReceive: OutflowReceiveNode, // <- new addition
-  receiver: ReceiverNode,
 };
 
 
