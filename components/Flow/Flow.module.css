@@ -1,0 +1,11 @@
+.flow {
+  flex-grow: 1;
+  font-size: 12px;
+  position: sticky;
+  height: 94vh;
+  width: screen;
+}
+.react-flow__panel.left {
+  left: 0;
+}
+

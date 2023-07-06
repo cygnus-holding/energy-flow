@@ -18,7 +18,7 @@ export default function TopNav() {
   const toggleModal = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="flex flex-row w-full items-center space-y-2.5 px-6 py-4 bg-white shadow-md">
+    <nav className="flex flex-row w-full items-center space-y-2.5 px-6 py-4 bg-white shadow-md sticky top-0 z-50">
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center space-x-4">
           <button onClick={() => handleLinkClick("/")}>
