@@ -1,7 +1,10 @@
 import React from 'react';
 
+type ComponentLibraryProps = {
+  addNode: (nodeType: string) => void;
+};
 
-const ComponentLibrary = ({ addNode }) => {
+const ComponentLibrary: React.FC<ComponentLibraryProps> = ({ addNode }) => {
   return (
     <div className="absolute top-10 left-10 bg-white p-4 rounded-md shadow-lg z-10">
       <h3 className="text-lg font-semibold mb-2">Component Library</h3>
