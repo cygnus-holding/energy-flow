@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { Handle, Position } from 'reactflow';
+import { useInflowStore } from './store';
 
 const mediumOptions = [
   {
@@ -32,21 +33,21 @@ const unitOptions = [
 ];
 
 function InflowAddNode() {
-  const outputData = { 
-    medium: "", 
-    value: "", 
-    unit: "", 
-    temperature: "", 
-    pressure: "" 
+  const { data, setInflowData } = useInflowStore();
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setInflowData({ ...data, [name]: value });
   };
 
   return (
     <div className="p-2 shadow-md rounded-md bg-white  border-gray-400 text-xs">
       <div className="font-bold text-s mx-1  border-gray-300 pb-2">INFLOW ADD</div>
-<div className='border-b border-gray-300 mb-2'></div>
+      <div className='border-b border-gray-300 mb-2'></div>
+
       <div className="mb-2">
         <div className="font-medium">Medium:</div>
-        <select className="w-full p-1 rounded border border-gray-300">
+        <select name="medium" value={data.medium} onChange={handleChange} className="w-full p-1 rounded border border-gray-300">
           {mediumOptions.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -58,11 +59,11 @@ function InflowAddNode() {
       <div className="grid grid-cols-2 gap-2 mb-2">
         <div>
           <div className="font-s">Value:</div>
-          <input className="w-full p-1 rounded border border-gray-300" type="number" step="0.01" />
+          <input name="value" value={data.value} onChange={handleChange} className="w-full p-1 rounded border border-gray-300" type="number" step="0.01" />
         </div>
         <div>
           <div className="font-medium">Unit:</div>
-          <select className="w-full p-1 rounded border border-gray-300">
+          <select name="unit" value={data.unit} onChange={handleChange} className="w-full p-1 rounded border border-gray-300">
             {unitOptions.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -74,22 +75,22 @@ function InflowAddNode() {
 
       <div className="mb-2">
         <div className="font-s">Temperature [*C]:</div>
-        <input className="w-full p-1 rounded border border-gray-300" type="number" step="0.01" />
+        <input name="temperature" value={data.temperature} onChange={handleChange} className="w-full p-1 rounded border border-gray-300" type="number" step="0.01" />
       </div>
 
       <div className="mb-2 border-b border-gray-300 pb-2">
         <div className="font-s">Pressure [kPa]:</div>
-        <input className="w-full p-1 rounded border border-gray-300" type="number" step="0.01" />
+        <input name="pressure" value={data.pressure} onChange={handleChange} className="w-full p-1 rounded border border-gray-300" type="number" step="0.01" />
       </div>
 
       <div className=" border-gray-300 pb-2 flex justify-end text-sm font-medium">Output</div>
-      
+
       <Handle
         type="source"
         position={Position.Right}
         id="out"
-        data={outputData}
-        style={{ background: '#555', width: '10px', height: '10px', left: "329px", top: "265px" }}
+        data={data}
+        style={{ background: '#555', width: '10px', height: '10px', top: "264px", bottom: "20px" }}
       />
       <Handle
         type="target"
