@@ -152,7 +152,6 @@ function Flow() {
         connectionLineType={ConnectionLineType.Bezier}
         fitView
       >
-        <Background color="#ccc" variant="dots" />
         <Controls position='top-right' backgrouns-color='white' />
       </ReactFlow>
     </div>
