@@ -89,7 +89,6 @@ function OutflowAddNode() {
         type="source"
         position={Position.Right}
         id="out"
-        data={data}
         style={{ background: '#555', width: '10px', height: '10px', top: "264px", bottom: "20px" }}
       />
       <Handle

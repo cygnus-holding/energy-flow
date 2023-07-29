@@ -8,13 +8,9 @@ import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
   return (
-
-            <div className={styles.container} height="92vh">
-
-  
-        <Flow />
-      </div>
-
+    <div className={styles.container} style={{height: "92vh"}}>
+      <Flow />
+    </div>
   );
 };
 

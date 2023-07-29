@@ -38,8 +38,8 @@ export default function TopNav() {
             <Link href="/sankey">
               <span className="text-base font-medium text-grey-600 hover:text-blue-800">Sankey</span>
             </Link>
-            <Link href="/faq">
-              <span className="text-base font-medium text-grey-600 hover:text-blue-800">FAQ</span>
+            <Link href="/ems">
+              <span className="text-base font-medium text-grey-600 hover:text-blue-800">EMS</span>
             </Link>
           </div>
         </div>
