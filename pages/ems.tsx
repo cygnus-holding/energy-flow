@@ -1,29 +1,25 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
+import { useSelector, useDispatch } from 'react-redux';
+import { loadIframe } from '../redux/iframeSlice';
+import { RootState } from '../redux/store';
 
 const Ems: NextPage = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,  // Load content only once
-  });
+  const dispatch = useDispatch();
+  const loaded = useSelector((state: RootState) => state.iframe.loaded);
 
-  const [loadContent, setLoadContent] = useState(false);
-
-  useEffect(() => {
-    if (inView) {
-      setLoadContent(true);
-    }
-  }, [inView]);
+  if (!loaded) {
+    dispatch(loadIframe());
+  }
 
   return (
     <>
       <Head>
         <title>Energy Management Solution Dashboard</title>
-        <meta http-equiv="Content-Security-Policy" content="frame-ancestors *;"></meta>
+        <meta httpEquiv="Content-Security-Policy" content="frame-ancestors *;"></meta>
       </Head>
-      <div ref={ref} style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", height: "100vh", overflow: "hidden" }}>
-        {loadContent &&
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", height: "100vh", overflow: "hidden" }}>
+        {loaded &&
           <>
             <div>
               <iframe src="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=1" height="33.33%" width="100%" frameBorder="0"></iframe>
