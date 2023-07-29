@@ -1,18 +1,13 @@
 {
-    "headers": [
-      {
-        "source": "/(.*)",
-        "headers": [
-          {
-            "key": "Content-Security-Policy",
-            "value": "frame-ancestors *; default-src https:"
-          },
-          {
-            "key": "X-Frame-Options",
-            "value": "ALLOWALL"
-          }
-        ]
-      }
-    ]
-  }
-  
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; frame-src http://34.147.155.217:3000; style-src 'self' 'unsafe-inline'"
+        }
+      ]
+    }
+  ]
+}
