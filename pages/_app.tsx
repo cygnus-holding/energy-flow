@@ -1,14 +1,19 @@
-import { AppProps } from 'next/app';  // import the AppProps type from Next.js
-import '../styles/globals.css'
-import NavBar from '../components/NavBar'
+import { AppProps } from 'next/app';
+import '../styles/globals.css';
+import NavBar from '../components/NavBar';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-function MyApp({ Component, pageProps }: AppProps) {  // add the AppProps type
+const queryClient = new QueryClient();
+
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div>
-      <NavBar />
-      <Component {...pageProps} />
-    </div>
-  )
+    <QueryClientProvider client={queryClient}>
+      <div>
+        <NavBar />
+        <Component {...pageProps} />
+      </div>
+    </QueryClientProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

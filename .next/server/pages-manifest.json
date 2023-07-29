@@ -1,9 +1,6 @@
 {
   "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/sankey": "pages/sankey.js",
-  "/ems": "pages/ems.js",
-  "/flowgraph": "pages/flowgraph.js",
-  "/docs": "pages/docs.js"
+  "/_error": "pages/_error.js",
+  "/ems": "pages/ems.js"
 }
