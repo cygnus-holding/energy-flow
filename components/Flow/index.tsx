@@ -30,7 +30,7 @@ const initialNodes: Node[] = [
     data: {
       label: 'Input Node',
     },
-    position: { x: 250, y: 0 },
+    position: { x: 400, y: 0 },
   },
   {
     id: '2',
