@@ -20,8 +20,9 @@ const Ems: NextPage = () => {
       <Head>
         <title>Energy Management Solution Dashboard</title>
         <meta httpEquiv="Content-Security-Policy" 
-              content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; frame-src *;"></meta>
+              content="default-src 'self' http: https: data: blob: 'unsafe-inline';"></meta>
       </Head>
+
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", height: "100vh", overflow: "hidden" }}>
         {loaded &&
           <>
