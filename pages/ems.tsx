@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react'; // Use this import statement
 import { loadIframe } from '../redux/iframeSlice';
 import { RootState } from '../redux/store';
 
@@ -8,9 +9,11 @@ const Ems: NextPage = () => {
   const dispatch = useDispatch();
   const loaded = useSelector((state: RootState) => state.iframe.loaded);
 
-  if (!loaded) {
-    dispatch(loadIframe());
-  }
+  useEffect(() => {
+    if (!loaded) {
+      dispatch(loadIframe());
+    }
+  }, [loaded, dispatch]);
 
   return (
     <>
@@ -23,17 +26,17 @@ const Ems: NextPage = () => {
         {loaded &&
           <>
             <div>
-              <iframe src="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=1" height="33.33%" width="100%" frameBorder="0"></iframe>
-              <iframe src="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=3" height="33.33%" width="100%" frameBorder="0"></iframe>
-              <iframe src="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=4" height="33.33%" width="100%" frameBorder="0"></iframe>
+              <object type="text/html" data="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=1" height="33.33%" width="100%" style={{overflow: "auto", resize: "both"}}></object>
+              <object type="text/html" data="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=3" height="33.33%" width="100%" style={{overflow: "auto", resize: "both"}}></object>
+              <object type="text/html" data="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=4" height="33.33%" width="100%" style={{overflow: "auto", resize: "both"}}></object>
             </div>
             <div>
-              <iframe src="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=7" height="100%" width="100%" frameBorder="0"></iframe>
+              <object type="text/html" data="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=7" height="100%" width="100%" style={{overflow: "auto", resize: "both"}}></object>
             </div>
             <div>
-              <iframe src="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=2" height="33.33%" width="100%" frameBorder="0"></iframe>
-              <iframe src="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=5" height="33.33%" width="100%" frameBorder="0"></iframe>
-              <iframe src="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=6" height="33.33%" width="100%" frameBorder="0"></iframe>
+              <object type="text/html" data="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=2" height="33.33%" width="100%" style={{overflow: "auto", resize: "both"}}></object>
+              <object type="text/html" data="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=5" height="33.33%" width="100%" style={{overflow: "auto", resize: "both"}}></object>
+              <object type="text/html" data="http://34.147.155.217:3000/d-solo/e2adf852-fb79-48be-b11f-ae529625e779/factory?orgId=1&panelId=6" height="33.33%" width="100%" style={{overflow: "auto", resize: "both"}}></object>
             </div>
           </>
         }
